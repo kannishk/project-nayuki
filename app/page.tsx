@@ -9,6 +9,12 @@ export default function Home() {
       <li>
         <Link href="/primefactor">Prime Factors</Link>
       </li>
+      <li>
+        <Link href="/vigenere">Vigenere Cipher</Link>
+      </li>
+      <li>
+        <Link href="/balance-eq">Balance Equations</Link>
+      </li>
     </ol>
   );
 }

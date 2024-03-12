@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 export default function Prime() {
-  const [number, setNumber] = useState(0);
+  const [first, setNumber] = useState(0);
   const [factor, setFactor] = useState("");
   const [unique, setUnique] = useState("");
   const [second, setSecond] = useState(0);
@@ -11,18 +11,18 @@ export default function Prime() {
     b === 0 ? a : calculateGcd(b, a % b);
 
   useEffect(() => {
-    if (!number) {
+    if (!first) {
       setFactor("");
       setUnique("");
       return;
     }
-    if (number === 1 || number === 2) {
+    if (first === 1 || first === 2) {
       setFactor("Number should be>2");
       setUnique("");
       return;
     }
     let uniqueSet = new Set();
-    let temp = number;
+    let temp = first;
     let ans = "";
     let divisor = "";
     let i = 2;
@@ -40,20 +40,23 @@ export default function Prime() {
     });
     setUnique(divisor);
     setFactor(ans);
-  }, [number]);
+  }, [first]);
 
   useEffect(() => {
+    const calculateGcd = (a: number, b: number): number =>
+      b === 0 ? a : calculateGcd(b, a % b);
+
     if (!second) {
       setGcd("");
       return;
     }
-    if (!number) {
+    if (!first) {
       setGcd("Enter first number as well");
       return;
     }
-    const ans = calculateGcd(number, second);
+    const ans = calculateGcd(first, second);
     setGcd(String(ans));
-  }, [second, number]);
+  }, [second, first]);
 
   return (
     <div>
